@@ -1,0 +1,48 @@
+2016-04-13 15:41:35,717 INFO  [SoapUI] Adding [/Users/kapil/Nayan-workspace/JabongGenericFramework/branchmaster/Jabong_GenericTestAutomationFramework/auto-test-executor/./ext/ReportCreation.jar] to extensions classpath
+2016-04-13 15:41:35,718 INFO  [SoapUI] Adding [/Users/kapil/Nayan-workspace/JabongGenericFramework/branchmaster/Jabong_GenericTestAutomationFramework/auto-test-executor/./ext/Trigger.jar] to extensions classpath
+2016-04-13 15:41:35,972 INFO  [DefaultSoapUICore] initialized soapui-settings from [/Users/kapil/soapui-settings.xml]
+2016-04-13 15:41:36,560 INFO  [WsdlProject] Loaded project from [file:/Users/kapil/Nayan-workspace/JabongGenericFramework/branchmaster/Jabong_GenericTestAutomationFramework/auto-test-executor/src/main/resources/Jabong_DesktopAutomatedTests/External_Files/JCart-IntegrationTests.xml]
+2016-04-13 15:41:36,560 WARN  [WsdlProject] Project 'JCart-IntegrationTests' is from a newer version (5.2.1) of SoapUI than this (4.6.4) and parts of it may be incompatible or incorrect. Saving this project with this version of SoapUI may cause it to function differently.
+2016-04-13 15:41:37,832 INFO  [log] session_idSM3UM7X2O6TADNKM5WGUJ5HMD
+2016-04-13 15:41:37,848 INFO  [log] Property1
+2016-04-13 15:41:37,848 INFO  [log] Property2
+2016-04-13 15:41:37,886 ERROR [SoapUI] An error occurred [Cannot invoke method executeQuery() on null object], see error log for details
+2016-04-13 15:41:37,886 ERROR [errorlog] java.lang.NullPointerException: Cannot invoke method executeQuery() on null object
+java.lang.NullPointerException: Cannot invoke method executeQuery() on null object
+	at org.codehaus.groovy.runtime.NullObject.invokeMethod(NullObject.java:88)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:45)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+	at org.codehaus.groovy.runtime.callsite.NullCallSite.call(NullCallSite.java:32)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:110)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:122)
+	at Script1.run(Script1.groovy:4)
+	at com.eviware.soapui.support.scripting.groovy.SoapUIGroovyScriptEngine.run(SoapUIGroovyScriptEngine.java:96)
+	at com.eviware.soapui.impl.wsdl.teststeps.WsdlGroovyScriptTestStep.run(WsdlGroovyScriptTestStep.java:149)
+	at com.eviware.soapui.impl.wsdl.support.AbstractTestCaseRunner.runTestStep(AbstractTestCaseRunner.java:235)
+	at com.eviware.soapui.impl.wsdl.testcase.WsdlTestCaseRunner.runCurrentTestStep(WsdlTestCaseRunner.java:48)
+	at com.eviware.soapui.impl.wsdl.support.AbstractTestCaseRunner.internalRun(AbstractTestCaseRunner.java:148)
+	at com.eviware.soapui.impl.wsdl.support.AbstractTestCaseRunner.internalRun(AbstractTestCaseRunner.java:43)
+	at com.eviware.soapui.impl.wsdl.support.AbstractTestRunner.run(AbstractTestRunner.java:135)
+	at com.eviware.soapui.impl.wsdl.support.AbstractTestRunner.start(AbstractTestRunner.java:77)
+	at com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase.run(WsdlTestCase.java:640)
+	at com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase.run(WsdlTestCase.java:73)
+	at com.auto.solution.TestDrivers.InvokeAPI.invoke(InvokeAPI.java:84)
+	at com.auto.solution.TestDrivers.StepSimulator.simulateTestStep(StepSimulator.java:486)
+	at com.auto.solution.TestEngine.TestEngine.ExecuteTestCase(TestEngine.java:219)
+	at com.auto.solution.TestEngine.TestEngine.initiateExecution(TestEngine.java:395)
+	at com.auto.solution.TestExecutor.TestRunner.main(TestRunner.java:26)
+2016-04-13 15:41:37,891 INFO  [TestLogger] ------------------------------------------------------------------------------------
+Test Step Description : 
+	@A invoke an api; @D JCart-IntegrationTests;
+ 
+Test Step Action : invokeapi 
+Test object :  
+Test Data used -- 'JCart-IntegrationTests' 
+Status : fail 
+Remarks : Cancelling due to failed test step 
+Execution Time : 2016/04/13 15:41:34 
+------------------------------------------------------------------------------------
+
+2016-04-13 15:41:37,891 INFO  [TestLogger] Execution ends for TEST
+2016-04-13 15:41:38,288 ERROR [TestLogger] Oops there are test failure, please refer the execution reports in your targets.
