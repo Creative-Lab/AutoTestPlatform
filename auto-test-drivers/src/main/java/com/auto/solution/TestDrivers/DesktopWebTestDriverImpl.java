@@ -65,8 +65,6 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 
 	private static RecoverySupportForSeleniumDriver recoverySupportHandle = null;
 	
-	private HashMap<String, String> testObjectInfo = new HashMap<String, String>();
-	
 	private String browserName = "";
 	
 	private boolean isRemoteExecution = false;
@@ -79,23 +77,15 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 	
 	private static WebDriverWait wait = null;
 	
-	private String locatingStrategyForObject = "";
-	
-	private String locationOfObject = "";
-	
-	private String testObjectLogicalName = "";
-	
     private WebElement actualTestElement = null;
-    
-    private String testObjectFrameDetails = "";
-    
-    private String testObjectFilterContents = "";
     
     private ArrayList<WebElement> testObjectsList = new ArrayList<WebElement>();
     
     private boolean getTestObjectList = false;
     
     private ResourceManager rManager;
+    
+    private TestObjectDetails testObjectInfo = null;
     
     DesktopWebTestDriverImpl(ResourceManager rManager) {
 		this.rManager = rManager;
@@ -401,7 +391,7 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 				this.testObjectsList = (ArrayList<WebElement>) testElements;
 			}
 			
-			String[] filtersForTestObject = this.testObjectFilterContents.split(",");
+			String[] filtersForTestObject = testObjectInfo.getFiltersAppliedOnTestObject().split(",");
 			
 			
 			for (WebElement testObject : testElements) {				
@@ -469,8 +459,8 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 	private void switchToTestObjectFrame() throws NoSuchFrameException{
 		try {
 			
-			if(this.testObjectFrameDetails.contains(Property.Frame_Details_Seperator)){
-				String[] parsedLocatorDetailsofFrameForTestObject = testObjectFrameDetails.split(Property.Frame_Details_Seperator);
+			if(testObjectInfo.getFramedetailsOfTestObject().contains(Property.Frame_Details_Seperator)){
+				String[] parsedLocatorDetailsofFrameForTestObject = testObjectInfo.getFramedetailsOfTestObject().split(Property.Frame_Details_Seperator);
 				WebElement frameWebElement = getFrameForTestObjectOnTheBasisOfFrameDetails(parsedLocatorDetailsofFrameForTestObject);
 				driver.switchTo().frame(frameWebElement);
 			}
@@ -480,14 +470,18 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 			//nothing to do 
 		}
 		catch (Exception e) {
-			String errMessage = ERROR_MESSAGES.ER_WHILE_SWITCHING_TO_FRAME.getErrorMessage().replace("{FRAME_DETAILS}", this.testObjectFrameDetails);
+			String errMessage = ERROR_MESSAGES.ER_WHILE_SWITCHING_TO_FRAME.getErrorMessage().replace("{FRAME_DETAILS}", testObjectInfo.getFramedetailsOfTestObject());
 			throw new NoSuchFrameException(errMessage);
 		}
 	}
 	
 	private WebElement getActualTestObject(){
 		WebElement testElement = null;		
-			
+		
+		String 	locatingStrategyForObject = testObjectInfo.getLocatingStrategyOfTestObject();
+		
+		String locationOfObject = testObjectInfo.getLocationOfTestObject();
+		
 		testElement = this.getTestObject(locatingStrategyForObject, locationOfObject);
 			
 		return testElement;					
@@ -503,6 +497,10 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 			if(Property.LIST_STRATEGY_KEYWORD.contains(Property.STRATEGY_KEYWORD.NOWAIT.toString())){
 				isWaitRequiredToFetchTheTestObject = false;
 			}
+			
+			String locatingStrategyForObject = testObjectInfo.getLocatingStrategyOfTestObject();
+			
+			String locationOfObject = testObjectInfo.getLocationOfTestObject();
 			
 			if(((locatingStrategyForObject=="")||locatingStrategyForObject==null)&&((locationOfObject=="")||locationOfObject==null))
 			{
@@ -574,33 +572,9 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 	
 	
 	@Override
-	public void setObjectDefenition(HashMap<String, String> objDefenition) {
-		this.testObjectInfo = null;
+	public void injectTestObjectDetail(TestObjectDetails objDetails) {
+		this.testObjectInfo = objDetails;
 		
-		this.testObjectInfo = objDefenition;
-		
-		this.locatingStrategyForObject = "";
-		
-		this.locationOfObject = "";
-		
-		if(testObjectInfo != null){
-			
-			this.locatingStrategyForObject = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInfo.get(Property.Locating_Strategy_Keyword));
-			
-			this.locationOfObject = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInfo.get(Property.Locating_Value_Keyword_In_OR)); 
-			
-			this.testObjectLogicalName = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInfo.get(Property.TESTOBJECT_KEYWORD_IN_ObjectRepository));
-			
-			this.testObjectFrameDetails = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInfo.get(Property.TestObject_InFrame_Keyword));
-			
-			this.testObjectFilterContents = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInfo.get(Property.TestObject_Filter_Keyword));
-		}
-		
-	}
-
-	@Override
-	public HashMap<String, String> getObjectDefenition() {		
-		return this.testObjectInfo;
 	}
 
 	@Override
@@ -728,7 +702,7 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 		Selenium objSelenium = this.GetSeleniumOne();
 		try{	
 			if(objSelenium != null){
-				objSelenium.doubleClick(locationOfObject);
+				objSelenium.doubleClick(testObjectInfo.getLocationOfTestObject());
 			}
 			else{
 				throw new SeleniumException(Property.ERROR_MESSAGES.ER_GETTING_DRIVER_SELENIUM.getErrorMessage());
@@ -866,7 +840,7 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 	@Override
 	public void isResourceLoaded() throws Exception {
 		String currentUrl = "";
-		String expectedUrl = locationOfObject;
+		String expectedUrl = testObjectInfo.getLocationOfTestObject();
 		if(expectedUrl == ""){
 			throw new Exception(Property.ERROR_MESSAGES.ER_SPECIFYING_OBJECT.getErrorMessage());
 		}
@@ -890,7 +864,7 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 			testElement = this.waitAndGetTestObject(true);
 		}
 		catch(NoSuchElementException ne){
-			if(locationOfObject != ""){
+			if(testObjectInfo.getLocationOfTestObject() != ""){
 				throw new NoSuchElementException(Property.ERROR_MESSAGES.ER_ELEMENT_NOT_PRESENT.getErrorMessage());
 			}
 			testElement = null;
@@ -1319,8 +1293,8 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 		Elements productContainer ;
 		Elements tag;
 		String currentURL;
-		String xpathForSort = this.testObjectFilterContents;
-		String xpathForProdContainer = this.locationOfObject;
+		String xpathForSort = testObjectInfo.getFiltersAppliedOnTestObject();
+		String xpathForProdContainer = testObjectInfo.getLocationOfTestObject();
 		StringTokenizer strToken ;
 		 try {
 			 	currentURL = driver.getPageSource();
@@ -1485,7 +1459,7 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 	@Override
 	public void verifyAndReportSectionLinks(String sectionName, String sectionValue) throws Exception{
 		try{
-			String PageNotFoundLocator = this.locationOfObject;
+			String PageNotFoundLocator = testObjectInfo.getLocationOfTestObject();
 			
 			HashMap<String, String> brokenUrls = new HashMap<String, String>();;
 			String fileLocation = rManager.getLocationForExternalFilesInResources().replace("{PROJECT_NAME}", Property.PROJECT_NAME);
@@ -1577,7 +1551,7 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 		
 		
 		try{
-			String PageNotFoundLocator = this.locationOfObject;
+			String PageNotFoundLocator = testObjectInfo.getLocationOfTestObject();
 			
 			HashMap<String, String> brokenUrls = new HashMap<String, String>();
 			
@@ -1635,7 +1609,7 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 	@Override
 	public void verifyAndReportSCO(String scoUrlSource) throws Exception{
 		try{
-			String SEO_Article = this.locationOfObject;
+			String SEO_Article = testObjectInfo.getLocationOfTestObject();
 			
 			HashMap<String, String> SEOURLS_STATUS = new HashMap<String, String>();
 			

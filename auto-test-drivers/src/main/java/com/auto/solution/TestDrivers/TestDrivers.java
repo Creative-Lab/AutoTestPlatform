@@ -9,9 +9,7 @@ import org.openqa.selenium.NoSuchElementException;
 
 public interface TestDrivers {
 
-	public void setObjectDefenition(HashMap<String, String> objDefenition);
-	
-	public HashMap<String, String> getObjectDefenition();
+	public void injectTestObjectDetail(TestObjectDetails testObjectDetails);
 	
 	public void initializeApp(String endpoint) throws MalformedURLException,Exception;
 	
