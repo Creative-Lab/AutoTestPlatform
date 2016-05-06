@@ -45,18 +45,6 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 
 	private static RecoverySupportForSeleniumDriver recoverySupportHandle = null;
 	
-	private HashMap<String, String> testObjectInformation = new HashMap<String, String>();
-	
-	private String locatingStrategyForObject = "";	
-	
-	private String locationOfObject = "";
-	
-	private String testObjectLogicalName = "";
-	
-	private String testObjectFrameDetails = "";
-	
-	private String testObjectFilterContents = "";
-	
 	private DesiredCapabilities driverCapability = new DesiredCapabilities();
 	
 	private boolean isRemoteExecution = false;
@@ -73,7 +61,10 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 	
 	private ArrayList<WebElement> testObjectList = new ArrayList<WebElement>();
 	
+	private TestObjectDetails testObjectInfo = null;
+	
 	private ResourceManager rManager;
+	
 	MobileAndriodTestDriverImpl(ResourceManager rm) {
 		this.rManager = rm;
 	}
@@ -95,33 +86,9 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 	}
 	
 	@Override
-	public void setObjectDefenition(HashMap<String, String> objDefenition) {
-		this.testObjectInformation = null;
+	public void injectTestObjectDetail(TestObjectDetails objDetails) {
+		this.testObjectInfo = objDetails;
 		
-		this.testObjectInformation = objDefenition;
-		
-		this.locatingStrategyForObject = "";
-		
-		this.locationOfObject = "";
-		
-		if(testObjectInformation != null){
-			
-			this.locatingStrategyForObject = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInformation.get(Property.Locating_Strategy_Keyword));
-			
-			this.locationOfObject = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInformation.get(Property.Locating_Value_Keyword_In_OR)); 
-			
-			this.testObjectLogicalName = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInformation.get(Property.TESTOBJECT_KEYWORD_IN_ObjectRepository));
-			
-			this.testObjectFrameDetails = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInformation.get(Property.TestObject_InFrame_Keyword));
-			
-			this.testObjectFilterContents = Utility.replaceAllOccurancesOfStringInVariableFormatIntoItsRunTimeValue(testObjectInformation.get(Property.TestObject_Filter_Keyword));
-		}
-		
-	}
-
-	@Override
-	public HashMap<String, String> getObjectDefenition() {
-		return this.testObjectInformation;
 	}
 
 	private void loadAndSetDriverCapabilities() throws Exception{
@@ -268,7 +235,7 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 				this.testObjectList.clear();
 				this.testObjectList = (ArrayList<WebElement>) testElements;
 			}
-			String[] filtersForTestObject = this.testObjectFilterContents.split(",");
+			String[] filtersForTestObject = testObjectInfo.getFiltersAppliedOnTestObject().split(",");
 			
 			
 			for (WebElement testObject : testElements) {				
@@ -325,6 +292,10 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 			isWaitRequiredToFetchTheTestObject = false;
 		}	
 		
+		String locatingStrategyForObject = testObjectInfo.getLocatingStrategyOfTestObject();
+		
+		String locationOfObject = testObjectInfo.getLocationOfTestObject();
+		
 		if(((locatingStrategyForObject=="")||locatingStrategyForObject==null)&&((locationOfObject=="")||locationOfObject==null))
 		{
 			throw new Exception(Property.ERROR_MESSAGES.ER_GETTING_TESTOBJECT.getErrorMessage());
@@ -369,7 +340,10 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 	
 	private WebElement getActualTestObject(){
 		WebElement testElement = null;		
-			
+		String locatingStrategyForObject = testObjectInfo.getLocatingStrategyOfTestObject();
+		
+		String locationOfObject = testObjectInfo.getLocationOfTestObject();
+		
 		testElement = this.getTestObject(locatingStrategyForObject, locationOfObject);
 			
 		return testElement;					
@@ -487,7 +461,7 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 	@Override
 	public void isResourceLoaded() throws Exception {
 		String currentUrl = "";
-		String expectedUrl = locationOfObject;
+		String expectedUrl = testObjectInfo.getLocationOfTestObject();
 		if(expectedUrl == ""){
 			throw new Exception(Property.ERROR_MESSAGES.ER_SPECIFYING_OBJECT.getErrorMessage());
 		}

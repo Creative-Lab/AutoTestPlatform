@@ -327,7 +327,8 @@ public class Property {
 		ERR_GENERATING_XML("Error occured while generating execution details logs in XML"),
 		ERR_INITIATING_REPORT("Error occured while generating test execution report"),
 		ERR_WHILE_PROCESSING_LOCALTESTDATA("Error while reading local test data, typical error details are - "),
-		ERR_ACCESSING_SOAP_PROJECT("Error in accessing soap ui project, please review again");
+		ERR_ACCESSING_SOAP_PROJECT("Error in accessing soap ui project, please review again"),
+		ERR_SET_TESTOBJECT_DETAILS("Error in setting test object details");
 		private String errorKeyword;
 		private ERROR_MESSAGES(String ErrorKeyword){
 			this.errorKeyword= ErrorKeyword;

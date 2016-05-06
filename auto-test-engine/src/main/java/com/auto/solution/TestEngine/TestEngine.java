@@ -13,7 +13,7 @@ import com.auto.solution.Common.*;
 import com.auto.solution.Common.Property.ERROR_MESSAGES;
 import com.auto.solution.DatabaseManager.ConnectDatabase;
 import com.auto.solution.HTMLReport.HTMLReportGenerator;
-import com.auto.solution.TestDrivers.StepSimulator;
+import com.auto.solution.TestDrivers.TestSimulator;
 import com.auto.solution.TestInterpretor.CompilerFactory;
 import com.auto.solution.TestInterpretor.ICompiler;
 import com.auto.solution.TestLogging.ITestExecutionDetailsContainer;
@@ -45,7 +45,7 @@ public class TestEngine {
     
     boolean IsWriteStep = false;
     
-    public StepSimulator objTestSimulator;
+    public TestSimulator objTestSimulator;
     
     private String testExecutionLogFileName;
     
@@ -168,7 +168,9 @@ public class TestEngine {
 				
 				HashMap<String, String> objectDefenition = testExecutionManager.getActualObjectDefination(testObjectToBeUsedForTestStep);
 				
-				objTestSimulator = new StepSimulator(Property.EXECUTION_TEST_DRIVER, objectDefenition,rManager);
+				objTestSimulator.enableTestDriver(Property.EXECUTION_TEST_DRIVER);
+				
+				objTestSimulator.setTestObjectInfo(objectDefenition);
 				
 				/*
 				 * Prepare Test Data.
@@ -327,6 +329,8 @@ public class TestEngine {
 		testManagerFactoryInstance = new TestManagerFactory(testManagerToolDefinedByUser,rManager);
 		
 		testManager = testManagerFactoryInstance.getTestManager(true);
+		
+		objTestSimulator = new TestSimulator(rManager);
 		
 		HashMap<String, Set<String>> filteredTestExecutionHierarchy = testManager.getTestSuiteAndTestCaseHierarchyForExecution();
 		
