@@ -96,7 +96,7 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 		
 			Set<String> inputKeys = Property.globalVarMap.keySet();
 			
-			String apkFilePath = rManager.getMobileAPKFileLocation().replace("{PROJECT_NAME}", Property.PROJECT_NAME);
+			//String apkFilePath = rManager.getMobileAPKFileLocation().replace("{PROJECT_NAME}", Property.PROJECT_NAME);
 			
 			for (String capabilitykey : inputKeys) {
 				if(capabilitykey.contains(Property.DRIVER_CAPABILITY_KEYWORD)){
@@ -107,10 +107,10 @@ public class MobileAndriodTestDriverImpl implements TestDrivers{
 					if(capabilityValue.toLowerCase().contains("null"))
 					{capabilityValue = "";}
 					
-					if(actualCapabilityName.equalsIgnoreCase("app")){
+					/*if(actualCapabilityName.equalsIgnoreCase("app")){
 						if(!capabilityValue.trim().equals(""))
 							capabilityValue = Utility.getAbsolutePath(apkFilePath.replace("{APK_FILENAME}", capabilityValue));
-					    }
+					    }*/
 					
 					driverCapability.setCapability(actualCapabilityName, capabilityValue);
 				}
