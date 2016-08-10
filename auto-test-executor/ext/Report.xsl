@@ -304,7 +304,7 @@ body {
 	</head>
       <body>
 	  <div id="test_Header">  
- 				<img src="http://static.jabong.com/images/jlite/logo-new.png" alt="Jabong.com" style="float: left;"></img> 
+ 				<img src="" alt="" style="float: left;"></img> 
  			    <span style="font-family: monospace;">Test Execution Summary Report </span> 
  			  </div> 
  	 <div id = "summary_container">
