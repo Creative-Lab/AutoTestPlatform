@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    
-   <groupId>org.jabong.com</groupId>
+   <groupId>org.monotype.com</groupId>
    
    <version>1.0</version>
    
@@ -14,19 +14,16 @@
    
    <description>Test automation framework for GUI testing.</description>
    
-   <inceptionYear>2015</inceptionYear>
+   <inceptionYear>2016</inceptionYear>
    <issueManagement>
        <system>jira</system>
-       <url>https://jira.rocket-internet.de</url>
+       <url></url>
    </issueManagement>
    <organization>
-       <name>Jabong.COM</name>
-       <url>http://www.jabong.com</url>
+       <name></name>
+       <url></url>
    </organization>
-   <scm>
-       <url>https://github.com/jabong/Jabong_GenericTestAutomationFramework</url>
-       <connection>scm:git:git://github.com/jabong/Jabong_GenericTestAutomationFramework</connection>
-       <developerConnection>scm:git:git@github.com:jabong/Jabong_GenericTestAutomationFramework.git</developerConnection>       
+   <scm>      
    </scm>
    
    <modules>       
@@ -52,7 +49,7 @@
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
 			<version>1.8.3</version>
-		</dependency>
+		</dependency>		
 	</dependencies>
    
    <build>
@@ -66,6 +63,30 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			<!--<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.4</version>
+                    <configuration>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                        <archive>
+                            <manifest>
+                                <mainClass>com.auto.solution.TestExecutor.TestRunner</mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin> -->
        </plugins>
    </build>
    
@@ -73,59 +94,14 @@
 	    <developer>
 	        <id>ngaur</id>
 	        <name>Nayan Gaur</name>
-	        <organisation>Jabong</organisation>
-	        <organizationUrl>http://www.jabong.com</organizationUrl>
+	        <organisation>Monotype</organisation>
+	        <organizationUrl>www.monotype.com</organizationUrl>
 	        <roles>
 	            <role>architech</role>
 	            <role>developer</role>
 	            <role>tester</role>
 	        </roles>
-	        <email>nayan.gaur@jabong.com</email>
-	    </developer>
-	    <developer>
-	        <id>rdantalwal</id>
-	        <name>Rahul Dantalwal</name>
-	        <organisation>Jabong</organisation>
-	        <organizationUrl>http://www.jabong.com</organizationUrl>
-	        <roles>
-	            <role>developer</role>
-	            <role>tester</role>
-	        </roles>
-	        <email>rahul.dantalwal@jabong.com</email>
-	    </developer>
-	    <developer>
-	        <id>achaudhary</id>
-	        <name>Akash Chaudhary</name>
-	        <organisation>Jabong</organisation>
-	        <organizationUrl>http://www.jabong.com</organizationUrl>
-	        <roles>
-	            <role>developer</role>
-	            <role>tester</role>
-	        </roles>
-	        <email>akash.chaudhary@jabong.com</email>
-	    </developer>
-	    <developer>
-	        <id>asinghal</id>
-	        <name>Ajay Singhal</name>
-	        <organisation>Jabong</organisation>
-	        <organizationUrl>http://www.jabong.com</organizationUrl>
-	        <roles>
-	            <role>developer</role>
-	            <role>tester</role>
-	        </roles>
-	        <email>ajay.singhal@jabong.com</email>
+	        <email>nayan.gaur@gmail.com</email>
 	    </developer>
 	</developers>
-	<contributors>
-	    <contributor>
-	        <name>Sushma Sharma</name>
-	        <organisation>Jabong</organisation>
-	        <organizationUrl>http://www.jabong.com</organizationUrl>
-	        <roles>
-	            <role>tester</role>
-	            <role>script-developer</role>
-	        </roles>
-	        <email>sushma.sharma@jabong.com</email>
-	    </contributor>
-	</contributors>
 </project>
