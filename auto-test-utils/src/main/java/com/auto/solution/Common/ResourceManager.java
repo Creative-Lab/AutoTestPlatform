@@ -21,8 +21,8 @@ public class ResourceManager {
 		this.targetBasePath = this.projectBasePath + FileSeperator + targetLocation;
 	}
 	
-	public void setResourcesBaseLocationRelativeToProjectBase(String resourceLocation){
-		this.resourceBasePath = this.projectBasePath + FileSeperator + resourceLocation;
+	public void setResourcesBaseLocation(String resourceLocation){
+		this.resourceBasePath = resourceLocation;
 	}
 	
 	public String getChromeDriverExecutibleLocation(){
@@ -70,7 +70,7 @@ public class ResourceManager {
 	}	
 	
 	public String getTestGroupPropertyFileLocationForFileSystem(){
-		String testGroup_file_location = this.resourceBasePath + FileSeperator + Property.TEST_GROUP_FILENAME;
+		String testGroup_file_location = this.resourceBasePath + FileSeperator +"{PROJECT_NAME}" + FileSeperator+ Property.TEST_GROUP_FILENAME;
 		return testGroup_file_location;
 	}
 }

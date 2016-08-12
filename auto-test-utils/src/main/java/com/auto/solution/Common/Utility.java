@@ -68,7 +68,7 @@ public class Utility {
 		return currentDate.toString().replace(":", "");
 	}
 	
-	public static  String getTenDigitUniqueNumberInString(){
+	public static  String getNineDigitUniqueNumberInString(){
 		return String.valueOf(System.currentTimeMillis()).substring(0, 10);
 	}
 	
@@ -131,7 +131,7 @@ public class Utility {
 			}
 			
 			Property.globalVarMap.put("timestamp", getCurrentTimeStampInAlphaNumericFormat());
-			Property.globalVarMap.put("unique", getTenDigitUniqueNumberInString());
+			Property.globalVarMap.put("unique", getNineDigitUniqueNumberInString());
 			
 			tempMap.putAll(Property.globalVarMap);
 			
@@ -175,6 +175,9 @@ public class Utility {
 
 	public static String getValueForKeyFromGlobalVarMap(String Key){
 		try {
+			if(Key.equals("unique")){
+				Property.globalVarMap.put("unique", getNineDigitUniqueNumberInString());
+			}
 			if(!Key.contains(Property.DRIVER_CAPABILITY_KEYWORD)){
 			Key = Key.toLowerCase();
 			}
