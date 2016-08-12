@@ -16,6 +16,8 @@ public class TestManagerFactory {
 		ITestManager testManager = null;
 		if(this.testManagerString.contains("testlink")){
 			testManager = new TESTLINKTestManager(isTestManagerNeedToReinitialized,this.rmanager);
+		}else if(this.testManagerString.contains("excel")){
+			testManager = new EXCELTestManager(this.rmanager);
 		}
 		else if(this.testManagerString.contains("testrail")){
 			testManager = new TESTRAILTestManager(isTestManagerNeedToReinitialized, this.rmanager);
