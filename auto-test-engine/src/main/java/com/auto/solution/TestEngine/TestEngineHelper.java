@@ -13,7 +13,7 @@ public class TestEngineHelper {
 			String resourceDirectoryProvided = System.getProperty("resourcedirectory");
 			String targetProvided = System.getProperty("targetname");
 			if(resourceDirectoryProvided != null){
-				rm.setResourcesBaseLocationRelativeToProjectBase(resourceDirectoryProvided);
+				rm.setResourcesBaseLocation(resourceDirectoryProvided);
 			}
 			if(targetProvided != null){
 				rm.setTargetBaseLocationRelativeToProjectBase(targetProvided);
