@@ -1,0 +1,23 @@
+Name,DB_Type,Driver,Connection String
+mongoIntDB,mongodb,NULL,mongodb://styloko:KNlZmiaNUp0B@180.179.157.51:27017
+mongoDevDB,mongodb,NULL,mongodb://43.252.89.64:27017
+bob_live,mysql,com.mysql.jdbc.Driver,jdbc:mysql://43.252.89.34:3306/bob_live?user=qa&password=qa@123
+bob_Artemis,mysql,com.mysql.jdbc.Driver,jdbc:mysql://146.88.25.39:3306/bob_live?user=nayan&password=nayan@jabong
+bob_LIVE,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.16.84.43:3306/bob_live?user=nayan&password=nayan@Jabong
+bob_Preprod,mysql,com.mysql.jdbc.Driver,jdbc:mysql://205.147.111.149:3306/bob_live?user=bob_live&password=CMcwnrU5
+bob_DevInt,mysql,com.mysql.jdbc.Driver,jdbc:mysql://205.147.97.22:3306/bob_live?user=qa&password=qa@123
+bob_QA4,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.102:3306/bob_live?user=bob_live&password=OCf0GEoD
+bob_QA6,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.118:3306/bob_live?user=bob_live&password=3RRD2y33
+bob_QA8,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.121:3306/bob_live?user=bob_live&password=aZIKOxCx
+bob_QA10,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.169:3306/bob_live?user=bob_live&password=xW5CmDLa
+bob_QA14,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.134:3306/bob_live?user=bob_live&password=zDcfiVyC
+bob_QA16,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.140:3306/bob_live?user=bob_live&password=IFZrGqhi
+bob_QA18,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.165:3306/bob_live?user=bob_live&password=eb8FS3et
+bob_QA20,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.151:3306/bob_live?user=bob_live&password=KwXdasGQ
+bob_QA24,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.161:3306/bob_live?user=bob_live&password=Eyf2Fl8c
+bob_alice8,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.121:3306/bob_live?user=bob_live&password=aZIKOxCx
+bob_alice21,mysql,com.mysql.jdbc.Driver,jdbc:mysql://172.18.0.153:3306/bob_live?user=qa&password=qa@123
+WMS_dev,sql,com.microsoft.sqlserver.jdbc.SQLServerDriver,jdbc:sqlserver://172.18.0.247;databaseName=jade;user=dwh;password=dwh@123
+bob_SCQA,mysql,com.mysql.jdbc.Driver,jdbc:mysql://180.179.157.54:3306/bob_live?user=bob_live&password=o3EGjJjK
+bob_SCINT,mysql,com.mysql.jdbc.Driver,jdbc:mysql://180.179.157.57:3306/bob_live?user=qa&password=qa@123
+mongoQaDB,mongodb,NULL,mongodb://styloko:KNlZmiaNUp0B@180.179.157.56:27017

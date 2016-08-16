@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+   <TestSuite>
+		<AsAQAIWantToEnsureCorrectnessOfCARTOperations>
+			<tags>CART,core</tags>
+		</AsAQAIWantToEnsureCorrectnessOfCARTOperations>
+		<AsAQAIWantToEnsureCorrectnessOfProductGiftWrapInCart>
+			<tags>GiftWrap,Cart</tags>
+		</AsAQAIWantToEnsureCorrectnessOfProductGiftWrapInCart>
+		<AsAQAIWantToEnsureCorrectnessOFVoucherOperationOnCart>
+			<tags>Voucher,Cart</tags>
+		</AsAQAIWantToEnsureCorrectnessOFVoucherOperationOnCart>
+		<AsAQAIWantToEnsureCorrectnessOfSHORTLISTOperations>
+			<tags>shortlist</tags>
+		</AsAQAIWantToEnsureCorrectnessOfSHORTLISTOperations>
+		<RegisteredUserPlaceOrderThroughCreditCard>
+			<tags>checkout,regorder,creditcard</tags>
+			<Registered_User_Place_Order_through_CreditCard>
+				<cardType>mastercard</cardType>
+				<ccvv>000</ccvv>
+				<ccname>Shabnam+Rai+Gupta</ccname>
+				<ccexpyr>2018</ccexpyr>
+				<ccexpmon>2</ccexpmon>
+				<ccnum>5566+2049+0009</ccnum>
+				<paymentMethod>Jabong</paymentMethod>
+				<paymentType>C</paymentType>
+				<first_name>testfirst</first_name>
+				<last_name>testlast</last_name>
+				<address1>testaddress1</address1>
+				<postcode>122001</postcode>
+				<phone>6799999999</phone>
+				<city>Gurgaon</city>
+				<fk_customer_address_region>29</fk_customer_address_region>
+			</Registered_User_Place_Order_through_CreditCard>
+			<Registered_User_Place_Order_through_CreditCard_With_JabongCredits_Enabled>
+				<cardType>mastercard</cardType>
+				<ccvv>000</ccvv>
+				<ccname>Shabnam+Rai+Gupta</ccname>
+				<ccexpyr>2018</ccexpyr>
+				<ccexpmon>2</ccexpmon>
+				<ccnum>5566+2049+0009</ccnum>
+				<paymentMethod>Jabong</paymentMethod>
+				<paymentType>C</paymentType>
+				<first_name>testfirst</first_name>
+				<last_name>testlast</last_name>
+				<address1>testaddress1</address1>
+				<postcode>122001</postcode>
+				<phone>6799999999</phone>
+				<city>Gurgaon</city>
+			</Registered_User_Place_Order_through_CreditCard_With_JabongCredits_Enabled>
+		</RegisteredUserPlaceOrderThroughCreditCard>
+		<RegisteredUserPlaceOrderThroughCOD>
+			<tags>checkout,regorder,cod</tags>
+		</RegisteredUserPlaceOrderThroughCOD>
+		<RegisteredUserPlaceOrderThroughNetbanking>
+			<tags>checkout,regorder,netbanking</tags>
+		</RegisteredUserPlaceOrderThroughNetbanking>
+		<RegisteredUserPlaceOrderThroughDebitCard>
+			<tags>checkout,regorder,debitcard</tags>
+		</RegisteredUserPlaceOrderThroughDebitCard>
+		<GuestUserPlaceOrderThroughCOD>
+			<tags>guestorder,cod</tags>
+		</GuestUserPlaceOrderThroughCOD>
+		<VerifyCustomerNewsletterPreference>
+		<tags>jauth,newsletter</tags>
+		</VerifyCustomerNewsletterPreference>
+		<AsAUserICanRegisterLoginLogoutFromWebsite>
+			<tags>jauth</tags>
+		<User_Successfully_Get_Registered_With_Correct_Credentials>
+			<First_Name>JabongAPIAutomation</First_Name>
+			<Last_Name>Test</Last_Name>
+			<password>testtest</password>
+			<gender>male</gender>
+			<is_newsletter_subscribed>0</is_newsletter_subscribed>
+		</User_Successfully_Get_Registered_With_Correct_Credentials>
+		<User_Successfully_Edits_Customer_Profile>
+				<AnniversaryDay></AnniversaryDay>
+				<Birthday>12-12-1981</Birthday>
+				<FirstName>Updated</FirstName>
+				<Gender>male</Gender>
+				<LastName>New</LastName>
+				<Phone>1212123123</Phone>
+				<RelationshipStatus>Single</RelationshipStatus>
+		</User_Successfully_Edits_Customer_Profile>
+		<User_Successfully_Logins_Through_Facebook_Account>
+			<Birthday></Birthday>
+			<City></City>
+			<EducationJSON></EducationJSON>
+			<EmploymentJSON></EmploymentJSON>
+			<FBAccessToken></FBAccessToken>
+			<FacebookPicUrl></FacebookPicUrl>
+			<FirstName>Test</FirstName>
+			<Gender>Male</Gender>
+			<IsConfirmed></IsConfirmed>
+			<LastName>Account</LastName>
+			<RelationshipStatus></RelationshipStatus>
+			<RequestUrl></RequestUrl>
+			<ReturnUrl></ReturnUrl>
+		</User_Successfully_Logins_Through_Facebook_Account>
+		<User_Cannot_Associate_Same_Email_With_Different_Facebook_Accounts>
+			<FirstName>Test</FirstName>
+			<Gender>Male</Gender>
+			<IsConfirmed></IsConfirmed>
+			<LastName>Account</LastName>
+			<RelationshipStatus></RelationshipStatus>
+			<RequestUrl></RequestUrl>
+			<ReturnUrl></ReturnUrl>
+		</User_Cannot_Associate_Same_Email_With_Different_Facebook_Accounts>
+		<User_Successfully_Login_Through_Google_Account>
+			<FirstName>Test</FirstName>
+			<Gender>Male</Gender>
+			<GooglePicUrl></GooglePicUrl>
+			<GoogleRefeshToken></GoogleRefeshToken>
+			<IsConfirmed></IsConfirmed>
+			<LastName>Account</LastName>
+			<RequestUrl></RequestUrl>
+		</User_Successfully_Login_Through_Google_Account>
+		<User_Cannot_Associate_Same_Email_With_Different_Google_Accounts>
+			<FirstName>Test</FirstName>
+			<Gender>Male</Gender>
+			<GooglePicUrl></GooglePicUrl>
+			<GoogleRefeshToken></GoogleRefeshToken>
+			<IsConfirmed></IsConfirmed>
+			<LastName>Account</LastName>
+			<RequestUrl></RequestUrl>
+		</User_Cannot_Associate_Same_Email_With_Different_Google_Accounts>	
+   </AsAUserICanRegisterLoginLogoutFromWebsite>
+		<AsAUserICouldNotLogInWithIncorrectDetails>
+		<tags>jauth,auth</tags>
+		<User_Does_Not_Get_Logged_In_Succesfully_With_InCorrect_Credentials>
+			<InCorrect_Email>notregistered_9283647926@gmail.com</InCorrect_Email>
+		</User_Does_Not_Get_Logged_In_Succesfully_With_InCorrect_Credentials>	
+	</AsAUserICouldNotLogInWithIncorrectDetails>
+		<AsAUserICanManageCustomerAddress>
+		<tags>jauth,auth</tags>
+		<Given_User_Create_New_Address_For_Registered_Customer>
+			<Address1>B-111</Address1> 
+			<Address2>Block Rajouri</Address2>
+			<AddressType>Shipping</AddressType>
+			<AlternatePhone>1221221221</AlternatePhone>
+			<FirstName>Test</FirstName>
+			<LastName>Automation</LastName>
+			<Phone>1231231231</Phone>
+		</Given_User_Create_New_Address_For_Registered_Customer>
+		<Given_User_Gets_And_Updates_Existing_Default_Shipping_Address>
+			<Address1>Shipping</Address1> 
+			<Address2>Updated</Address2>
+			<AddressType>Shipping</AddressType>
+			<AlternatePhone>1234123412</AlternatePhone>
+			<FirstName>Tested</FirstName>
+			<LastName>Automation</LastName>
+			<Phone>1231231231</Phone>
+		</Given_User_Gets_And_Updates_Existing_Default_Shipping_Address>
+		<Given_User_Gets_And_Updates_Existing_Default_Billing_Address>
+			<Address1>Billing</Address1> 
+			<Address2>D block</Address2>
+			<AddressType>Billing</AddressType>
+			<AlternatePhone>1234123412</AlternatePhone>
+			<FirstName>Tested</FirstName>
+			<LastName>Automation</LastName>
+			<Phone>1010101010</Phone>
+		</Given_User_Gets_And_Updates_Existing_Default_Billing_Address>
+	</AsAUserICanManageCustomerAddress>
+		<User_SEARCH_Through_Application>
+		<tags>DISCOVERY,search</tags>
+		<As_A_User_I_SEARCH_For_Various_Brands>
+			<simplebrands>adidas,puma,18 fire,Only,oomph!,ESTD.1977</simplebrands><brandidentifier>Adidas,Puma,18 Fire,Only,OOMPH!,ESTD.1977</brandidentifier>
+			<brandswithautophrases>ucb[United Colors Of Benetton | Under Colors Of Benetton],us polo assn[U.S. Polo Assn.]</brandswithautophrases>
+		</As_A_User_I_SEARCH_For_Various_Brands>
+		<As_A_User_I_SEARCH_For_different_TYPES>
+			<types>Moccasins,comforters,round neck tshirts</types>
+		</As_A_User_I_SEARCH_For_different_TYPES>
+		<As_A_User_I_SEARCH_For_different_Categories>
+			<categories>clothing,shoes,home furniture</categories>
+		</As_A_User_I_SEARCH_For_different_Categories>
+		<As_A_User_I_SEARCH_For_different_Segments>
+			<segments>men,women,kids</segments>
+		</As_A_User_I_SEARCH_For_different_Segments>
+		<As_a_user_I_SEARCH_for_BrandAndType_combinations>
+			<brandtypes>casio digital watches,adidas round neck tshirt</brandtypes>
+		</As_a_user_I_SEARCH_for_BrandAndType_combinations>
+		<As_A_User_I_SEARCH_For_BrandsCategory_combinations>
+			<brandcategories>adidas clothing</brandcategories>
+		</As_A_User_I_SEARCH_For_BrandsCategory_combinations>
+		<As_A_User_I_Search_For_BrandAndSegment_combinations>
+			<brandsegments>men adidas,women puma</brandsegments>
+		</As_A_User_I_Search_For_BrandAndSegment_combinations>
+		<As_A_User_I_Search_For_TypeAndCategory_combinations>
+			<typecategories>crop tops women clothing,digital watches accessories</typecategories>
+		</As_A_User_I_Search_For_TypeAndCategory_combinations>
+		<As_A_User_I_Search_For_TypeAndSegment_combinations>
+			<typesegments>women digital watches</typesegments>
+		</As_A_User_I_Search_For_TypeAndSegment_combinations>
+		<As_A_User_I_Search_For_Multiple_Brands>
+			<multibrands>adidas puma</multibrands>
+		</As_A_User_I_Search_For_Multiple_Brands>
+		<As_A_User_I_Search_For_Multiple_Types>
+			<multitypes>comforters blankets duvets,wayfarers cat eyes oval frames</multitypes>
+		</As_A_User_I_Search_For_Multiple_Types>
+		<As_A_User_I_Search_For_Multiple_Categories>
+			<multicategories>shoes clothing,shoes bags</multicategories>
+		</As_A_User_I_Search_For_Multiple_Categories>
+		</User_SEARCH_Through_Application>
+		<User_Apply_FILTERS_While_SEARCH>
+			<tags>DISCOVERY,FILTER</tags>
+			<User_Apply_Filters_For_Price>
+				<searchparam>shoes</searchparam>
+				<pricerange>500-5000</pricerange>
+			</User_Apply_Filters_For_Price>
+			<User_Apply_Filters_For_Brand>
+				<searchparam>jeans</searchparam>
+				<brandidfilter>138</brandidfilter>
+			</User_Apply_Filters_For_Brand>
+			<User_Apply_Filters_For_Color>
+				<searchparam>jeans</searchparam>
+				<colorfilter>Blue</colorfilter>
+			</User_Apply_Filters_For_Color>
+			<User_Apply_Filters_For_Color_And_StandardSize>
+				<searchparam>jeans</searchparam>
+				<colorfilter>Blue</colorfilter>
+				<standardsizefilter>36</standardsizefilter>
+			</User_Apply_Filters_For_Color_And_StandardSize>
+			<User_Apply_Filters_For_DISCOUNTED_ITEMS>
+				<searchparam>jeans</searchparam>
+				<discountfilter>online-sale</discountfilter>
+			</User_Apply_Filters_For_DISCOUNTED_ITEMS>
+			<User_Apply_Filters_For_Gender>
+				<searchparam>watches</searchparam>
+				<genderfilter>Men</genderfilter>
+			</User_Apply_Filters_For_Gender>
+			<User_Apply_Filters_For_NewProducts>
+				<searchparam>jeans</searchparam>
+			</User_Apply_Filters_For_NewProducts>
+			<User_Apply_Filters_For_MarketPlaceProducts>
+				<searchparam>watches</searchparam>
+			</User_Apply_Filters_For_MarketPlaceProducts>
+		</User_Apply_FILTERS_While_SEARCH>
+		<User_SORT_The_SerachResults>
+			<tags>DISCOVERY,sort</tags>
+			<User_SORTBy_PRICE_LOW_TO_HIGH>
+				<searchparam>jeans</searchparam>
+			</User_SORTBy_PRICE_LOW_TO_HIGH>
+			<User_SORTBy_PRICE_HIGH_TO_LOW>
+				<searchparam>jeans</searchparam>
+			</User_SORTBy_PRICE_HIGH_TO_LOW>
+			<User_SORTBy_SCORE>
+				<searchparam>jeans</searchparam>
+			</User_SORTBy_SCORE>
+		</User_SORT_The_SerachResults>
+		<GET_ORDER_DETAILS>
+		<tags>orderDetails</tags>
+		<USER_GET_ORDER>
+			<field1>address,shipping</field1>
+			<field2>address,finance</field2>
+			<field3>address,shipping,finance</field3>
+			<field4>address</field4>
+			<field5>shipping</field5>
+			<field6>finance</field6>
+			<field7></field7>
+		</USER_GET_ORDER>
+	</GET_ORDER_DETAILS>
+	<Search_Order>
+		<tags>searchOrder</tags>
+		<Searchby_OrderNr>
+		<field1>address,shipping,finance</field1>
+		<field2>address,shipping</field2>
+		<field3>address,finance</field3>
+		<field4>shipping,finance</field4>
+		<field5>address</field5>
+		<field6>shipping</field6>
+		<field7>finance</field7>
+		<field8></field8>
+		</Searchby_OrderNr>
+	</Search_Order>
+    <Verify_Org_Create_Seller_Functionality>
+        <tags>org,org_createseller</tags>
+    </Verify_Org_Create_Seller_Functionality>
+    <UseCase_VerifyOrchestratorCreateSeller>
+        <tags>orchestrator,orchestrator_createseller</tags>
+    </UseCase_VerifyOrchestratorCreateSeller>
+    <Verify_Org_Update_Seller_Functionality>
+        <tags>org,org_updateSeller</tags>
+    </Verify_Org_Update_Seller_Functionality>
+    <Verify_Correctness_Of_BRANDS_APIs>
+        <tags>brand,boutique</tags>
+        <User_verfiy_GetBrandInfoByType_With_Different_Input_Combinations>
+            <brand_type1>boutique</brand_type1>
+            <brand_type2>designer</brand_type2>
+            <brand_type3>top</brand_type3>
+            <brand_type4>premium</brand_type4>
+            <brand_type5>exclusive</brand_type5>
+        </User_verfiy_GetBrandInfoByType_With_Different_Input_Combinations>
+        <User_verfiy_GetBrandInfoByURL_KEY_With_Different_Input_Combinations>
+            <url_key1>a2b2</url_key1>
+            <url_key2>$</url_key2>
+        </User_verfiy_GetBrandInfoByURL_KEY_With_Different_Input_Combinations>
+        <User_verfiy_GetBrandInfoByNAME_With_Different_Input_Combinations>
+            <brand_name1>123ab</brand_name1>
+            <brand_name2>$</brand_name2>
+        </User_verfiy_GetBrandInfoByNAME_With_Different_Input_Combinations>
+        <User_verify_the_BRAND_InternalApis_With_Different_Input_Combinations>
+            <is_reusable></is_reusable>
+            <invalid_brand_id>637284872148721</invalid_brand_id>
+            <invalid_brand_name>brand-name</invalid_brand_name>
+            <invalid_url_key>url-key</invalid_url_key>
+            <invalid_brand_type>boutique</invalid_brand_type>
+        </User_verify_the_BRAND_InternalApis_With_Different_Input_Combinations>
+        <User_verify_BRAND_EXTERNALApis_With_Invalid_Inputs>
+            <is_reusable></is_reusable>
+            <invalid_brand_id>637284872148721</invalid_brand_id>
+            <invalid_brand_name>brand-name</invalid_brand_name>
+            <invalid_url_key>url-key</invalid_url_key>
+            <invalid_brand_type>type</invalid_brand_type>
+        </User_verify_BRAND_EXTERNALApis_With_Invalid_Inputs>
+    </Verify_Correctness_Of_BRANDS_APIs>
+    <Verify_Correctness_Of_SizechartAPIs>
+        <tags>sizechart,boutique</tags>
+        <User_verify_the_SIZECHART_InternalApis_With_Different_InvalidInputs>
+            <is_reusable></is_reusable>
+            <Invalid_sizechart1>12345678</Invalid_sizechart1>
+            <Invalid_sizechart2>aa22bb</Invalid_sizechart2>
+            <Invalid_sizechart3>$</Invalid_sizechart3>
+            <Invalid_sizechart4>-2 </Invalid_sizechart4>
+        </User_verify_the_SIZECHART_InternalApis_With_Different_InvalidInputs>
+        <User_verify_the_SIZECHART_ExternalApis_With_Different_InvalidInputs>
+            <is_reusable></is_reusable>
+            <Invalid_sizechart1>12345678</Invalid_sizechart1>
+            <Invalid_sizechart2>aa22bb</Invalid_sizechart2>
+            <Invalid_sizechart3>$</Invalid_sizechart3>
+            <Invalid_sizechart4>-2 </Invalid_sizechart4>
+        </User_verify_the_SIZECHART_ExternalApis_With_Different_InvalidInputs>
+    </Verify_Correctness_Of_SizechartAPIs>
+    <Verify_Correctness_Of_CategoryAPIs>
+        <tags>category,boutique</tags>
+        <User_verify_the_category_InternalApis_With_Different_InvalidInputs>
+            <Invalid_category1>12345678</Invalid_category1>
+            <Invalid_category2>$</Invalid_category2>
+            <Invalid_category3>id</Invalid_category3>
+        </User_verify_the_category_InternalApis_With_Different_InvalidInputs>
+        <User_verify_the_category_ExternalApis_With_Different_InvalidInputs>
+            <Invalid_category1>12345678</Invalid_category1>
+            <Invalid_category2>$</Invalid_category2>
+            <Invalid_category3>id</Invalid_category3>
+        </User_verify_the_category_ExternalApis_With_Different_InvalidInputs>
+    </Verify_Correctness_Of_CategoryAPIs>
+    <Verify_Correctness_Of_AttributeSetsAPIs>
+        <tags>attributeset,boutique</tags>
+        <User_verify_attribute_set_APIs_With_Invalid_Inputs>
+            <Invalid_range>1234567890</Invalid_range>
+            <Special_character>$</Special_character>
+            <Negative_value>  -2</Negative_value>
+        </User_verify_attribute_set_APIs_With_Invalid_Inputs>
+    </Verify_Correctness_Of_AttributeSetsAPIs>
+    <Verify_Correctness_of_Ratings_API>
+        <tags>ratings,rating,boutique</tags>
+        <E2E_TestCase_for_ratings_API>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+        </E2E_TestCase_for_ratings_API>
+        <User_Can_create_and_Verify_Status_As_PENDING>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <userratingcomment>Nice Product</userratingcomment>
+            <nickname></nickname>
+            <ratingtitle></ratingtitle>
+        </User_Can_create_and_Verify_Status_As_PENDING>
+        <User_Can_post_rating>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <userratingcomment>Nice Product</userratingcomment>
+            <nickname></nickname>
+            <ratingtitle></ratingtitle>
+        </User_Can_post_rating>
+        <User_Can_verify_status_of_Rating_As_PENDING>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <userratingcomment>Nice Product</userratingcomment>
+            <nickname></nickname>
+            <ratingtitle></ratingtitle>
+        </User_Can_verify_status_of_Rating_As_PENDING>
+        <User_Can_verify_status_of_Rating_As_APPROVED>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <userratingcomment>Nice Product</userratingcomment>
+            <nickname></nickname>
+            <ratingtitle></ratingtitle>
+        </User_Can_verify_status_of_Rating_As_APPROVED>
+        <User_Can_verify_status_of_Rating_As_REJECTED>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <userratingcomment>Nice Product</userratingcomment>
+            <nickname></nickname>
+            <ratingtitle></ratingtitle>
+        </User_Can_verify_status_of_Rating_As_REJECTED>
+        <User_Can_Pass_wrong_SKU_associated_with_Product_ID>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <userratingcomment>Nice Product</userratingcomment>
+            <nickname></nickname>
+            <ratingtitle></ratingtitle>
+        </User_Can_Pass_wrong_SKU_associated_with_Product_ID>
+        <User_Can_verify_status_of_Rating_As_APPROVED_bySKU>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <userratingcomment>Nice Product</userratingcomment>
+            <nickname></nickname>
+            <ratingtitle></ratingtitle>
+        </User_Can_verify_status_of_Rating_As_APPROVED_bySKU>
+        <Verify_Internal_External_response_for_rating_related_to_specific_SKU>
+            <is_reusable></is_reusable>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <userratingcomment>Nice Product</userratingcomment>
+            <nickname></nickname>
+            <ratingtitle></ratingtitle>
+        </Verify_Internal_External_response_for_rating_related_to_specific_SKU>
+        <Verify_rating_settings_internal_external_response_with_DB>
+        </Verify_rating_settings_internal_external_response_with_DB>
+        
+    </Verify_Correctness_of_Ratings_API>
+    <Verify_correctness_of_Bundles_API>
+        <tags>bundle,boutique</tags>
+        <E2E></E2E>
+    </Verify_correctness_of_Bundles_API>
+    <Verify_correctness_of_Product_API>
+        <tags>product,boutique</tags>
+        <Verify_Attribute_value_for_given_product_id>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+        </Verify_Attribute_value_for_given_product_id>
+        <Verify_Attribute_value_for_given_product_sku>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+        </Verify_Attribute_value_for_given_product_sku>
+        <Verify_Attribute_value_for_given_product_sku>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+        </Verify_Attribute_value_for_given_product_sku>
+        <Verify_Attribute_value_for_multiple_product_ids>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+        </Verify_Attribute_value_for_multiple_product_ids>
+        <Verify_Attribute_value_for_multiple_product_skus>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+        </Verify_Attribute_value_for_multiple_product_skus>		
+    </Verify_correctness_of_Product_API>
+    <Verify_correctness_of_PDP_API>
+        <tags>pdp,boutique</tags>
+        <Verify_results_when_module_is_PRODUCT>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <module>product</module>
+        </Verify_results_when_module_is_PRODUCT>	
+        <Verify_results_when_module_is_CATEGORY>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <module>category</module>
+        </Verify_results_when_module_is_CATEGORY>	
+        <Verify_results_when_module_is_BRAND>
+            <segment>men</segment>
+            <category>accessories</category>
+            <subcategory>sunglasses</subcategory>
+            <specificselection>rectangle-frame</specificselection>
+            <module>brand</module>
+        </Verify_results_when_module_is_BRAND>		
+    </Verify_correctness_of_PDP_API>
+    <UseCase_VerifyOrchestratorUpdateSeller>
+        <tags>orchestrator,orchestrator_updateseller</tags>
+    </UseCase_VerifyOrchestratorUpdateSeller>
+<UseCase_VerifyOrchestratorServiceGetSeller>
+	<tags>orchestrator,orchestrator_getseller</tags>
+</UseCase_VerifyOrchestratorServiceGetSeller>
+<Verify_Org_Get_Seller_Functionality>
+	<tags>org,org_getSeller</tags>
+</Verify_Org_Get_Seller_Functionality>
+<UseCase_VerifyOrchestratorCatalog>
+	<tags>orchestrator,orchestrator_catalog</tags>
+</UseCase_VerifyOrchestratorCatalog>
+<UseCase_VerifyStockApisFunctionality>
+	<tags>stock</tags>
+</UseCase_VerifyStockApisFunctionality>
+<Verify_Org_Seller_Rating>
+	<tags>org,org_rating</tags>
+</Verify_Org_Seller_Rating>
+<Usecase_VerifyProductApisFunctionality>
+	<tags>orchestrator,orchestrator_product</tags>
+</Usecase_VerifyProductApisFunctionality>
+<USECASE_VerifyStylokogetBrands>
+	<tags>styloko,styloko_getbrands</tags>
+</USECASE_VerifyStylokogetBrands>
+<UseCase_VerifySkylokoGetAttributes>
+	<tags>styloko,styloko_getattributes</tags>
+</UseCase_VerifySkylokoGetAttributes>
+<USECASE_VerifyStylokoGetCategories>
+	<tags>styloko,styloko_getcategories</tags>
+</USECASE_VerifyStylokoGetCategories>
+<Usecase_UpdateProductStock>
+	<tags>orchestrator,orchestrator_updatestock</tags>
+</Usecase_UpdateProductStock>
+<Usecase_UpdateProductPrice>
+	<tags>orchestrator,orchestrator_updateprice</tags>
+</Usecase_UpdateProductPrice>
+<UseCase_VerifyOrchestratorCreateProducts>
+	<tags>orchestrator,orchestrator_createproduct</tags>
+</UseCase_VerifyOrchestratorCreateProducts>
+<Apollo11_UpdateOrderStatus>
+        <tags>order,updateorder</tags>
+</Apollo11_UpdateOrderStatus>
+<Apollo11_Order_Customer_View>
+        <tags>order,customerview,ordercustomerview</tags>
+</Apollo11_Order_Customer_View>
+<Apollo_Stock_Add_UpdateAPITestSuite>
+        <tags>stock</tags>
+</Apollo_Stock_Add_UpdateAPITestSuite>
+<UseCase_VerifyMarketPlaceOrdersList>
+	<tags>orc_marketplace</tags>
+</UseCase_VerifyMarketPlaceOrdersList>
+<Apollo_jLogistics_PostOrderAPI_TestSuite>
+	<tags>jLogistics</tags>
+	<TC_Validate_the_fwd_serviceability_of_docket>
+	<next_door>0</next_door>
+	<items>1373</items>
+	<dsp_code>JAVAS_1</dsp_code>
+	</TC_Validate_the_fwd_serviceability_of_docket>
+	<TC_Validate_the_fwd_serviceability_of_docket_without_dspCode>
+	<next_door>0</next_door>
+	<items>1373</items>
+	</TC_Validate_the_fwd_serviceability_of_docket_without_dspCode>
+</Apollo_jLogistics_PostOrderAPI_TestSuite>
+</TestSuite>
+</project>

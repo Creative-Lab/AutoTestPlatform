@@ -12,11 +12,12 @@
    
    <name>AutoTest-Parent</name>
    
-   <description>Test automation framework for GUI testing.</description>
+   <description>Test automation framework</description>
    
    <inceptionYear>2016</inceptionYear>
-   <issueManagement>
-       <system>jira</system>
+   
+	<issueManagement>
+       <system>git</system>
        <url></url>
    </issueManagement>
    <organization>
@@ -25,45 +26,44 @@
    </organization>
    <scm>      
    </scm>
-   
-   <modules>       
-		<module>auto-test-utils</module>
-        <module>auto-test-interpretor</module>       
-        <module>auto-test-manager</module>
-	    <module>auto-test-drivers</module>
-	    <module>auto-test-logging</module>
-        <module>auto-test-engine</module>
-		<module>auto-test-executor</module>
-		<module>auto-test-reporter</module>	   
-   </modules>
-   
-   <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<targetname>target</targetname>
-		<basedirectory>${project.basedir}</basedirectory>
-		<resourcedirectory>${project.basedir}/src/main/resources</resourcedirectory>
-	</properties>
-	
-	<dependencies>
-	    <dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.8.3</version>
-		</dependency>		
-	</dependencies>
-   
-   <build>
-       <plugins>
-           <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-			<!--<plugin>
+   <profiles>
+		<profile>
+		<id>frontend</id>
+   			<modules>       
+				<module>auto-test-utils</module>
+       			<module>auto-test-interpretor</module>       
+        		<module>auto-test-manager</module>
+	    		<module>auto-test-drivers</module>
+	    		<module>auto-test-logging</module>
+        		<module>auto-test-engine</module>
+				<module>auto-test-executor</module>
+				<module>auto-test-reporter</module>	   
+   			</modules>
+    		<properties>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				<targetname>target</targetname>
+				<basedirectory>${project.basedir}</basedirectory>
+				<resourcedirectory>${project.basedir}/src/main/resources</resourcedirectory>
+			</properties>
+			<dependencies>
+	    		<dependency>
+					<groupId>org.jsoup</groupId>
+					<artifactId>jsoup</artifactId>
+					<version>1.8.3</version>
+				</dependency>		
+			</dependencies>
+   			<build>
+       			<plugins>
+           			<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>2.3.2</version>
+						<configuration>
+								<source>1.6</source>
+								<target>1.6</target>
+						</configuration>
+					</plugin>
+					<!--<plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
                     <version>2.4</version>
@@ -87,9 +87,123 @@
                         </execution>
                     </executions>
                 </plugin> -->
-       </plugins>
-   </build>
-   
+      		</plugins>
+   			</build>
+		</profile>
+		<profile>
+		<id>apis_functional</id>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>smartbear-sweden-plugin-repository</id>
+					<url>http://www.soapui.org/repository/maven2/</url>
+				</pluginRepository>
+			</pluginRepositories>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-clean-plugin</artifactId>
+						<version>2.4.1</version>
+						<configuration>
+						  <filesets>
+							<fileset>
+							  <directory>${basedir}</directory>
+							  <includes>
+								<include>**/*.log</include>
+							  </includes>
+							  <followSymlinks>false</followSymlinks>
+							</fileset>
+						  </filesets>
+						</configuration>
+						</plugin>
+					<plugin>
+						<groupId>com.github.redfish4ktc.soapui</groupId>
+						<artifactId>maven-soapui-extension-plugin</artifactId>
+						<version>4.6.4.2</version>
+					<dependencies>
+					    <dependency>
+							<groupId>org.slf4j</groupId>
+							<artifactId>slf4j-api</artifactId>
+							<version>1.6.6</version>
+						</dependency>
+
+						<dependency>
+							<groupId>org.slf4j</groupId>
+							<artifactId>slf4j-log4j12</artifactId>
+							<version>1.6.6</version>
+						</dependency>
+						<dependency> 
+							<groupId>org.reflections</groupId> 
+							<artifactId>reflections</artifactId> 
+							<version>0.9.9-RC1</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.poi</groupId>
+							<artifactId>poi-ooxml</artifactId>
+							<version>3.10-FINAL</version>
+						</dependency>
+						<dependency>
+							<groupId>org.skyscreamer</groupId>
+							<artifactId>jsonassert</artifactId>
+							<version>1.2.3</version>
+						</dependency>
+					</dependencies>
+						<configuration>
+							<projectFile>${basedir}/auto-test-api/src/test/java/com/api/projects/TT_APIsTests.xml</projectFile>
+							<!--<testSuite>IntegrationTestSuite</testSuite>-->
+							<!--<testCase></testCase>-->
+							<outputFolder>${project.build.directory}/surefire-reports</outputFolder>
+							<!--Make the jUnit results file-->
+							<junitReport>false</junitReport>
+							<exportAll>true</exportAll>
+							<!-- Print small report to the console -->
+							<printreport>true</printreport>
+							<!--<testFailIgnore>true</testFailIgnore>-->
+							<!--<reportName>CDI-Functional-Test</reportName>-->
+							<reportName>Data Export</reportName>
+							<reportFormat>XML</reportFormat>
+							<settingsFile>${basedir}/auto-test-api/ext/soapui-settings.xml</settingsFile>
+							  <projectProperties>
+								<value>jcartendpoint=${jcartendpoint}</value>
+								<value>jauthendpoint=${jauthendpoint}</value>
+								<value>jcheckoutendpoint=${jcheckoutendpoint}</value>
+								<value>jshortlistendpoint=${jshortlistendpoint}</value>
+								<value>discoveryendpoint=${discoveryendpoint}</value>
+								<value>orderendpoint=${orderendpoint}</value>
+								<value>user_email=${user_email}</value>
+								<value>user_password=${user_password}</value>
+								<value>orderListProvider=${orderListProvider}</value>
+								<value>orderNumberList=${orderNumberList}</value>
+								<value>dbname=${dbname}</value>
+								<value>execution_tag=${execution_tag}</value>
+								<value>voucher_code=${voucher_code}</value>
+								<value>endpoint=${boutique_endpoint}</value>
+								<value>endpoint_internal=${boutique_endpoint_internal}</value>
+							  </projectProperties>
+							<soapuiProperties>
+								<property>
+									<name>soapui.home</name>
+									<value>${env.SOAPUI_HOME}/bin</value>									
+								</property>
+								<property>
+									<name>soapui.ext.libraries</name>
+									<value>${basedir}/auto-test-api/ext</value>
+								</property>								
+							</soapuiProperties>
+						</configuration>
+						<executions>
+							<execution>
+								<id>FrontEnd-functional-tests</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+							</execution>							
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+  </profiles> 
    <developers>
 	    <developer>
 	        <id>ngaur</id>
