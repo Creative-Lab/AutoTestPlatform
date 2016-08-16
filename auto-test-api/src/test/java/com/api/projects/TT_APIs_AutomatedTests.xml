@@ -1,8 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="6c6fb9a9-5dc3-4a2a-83e3-c252e3b49272" activeEnvironment="Default" name="TT_APIs_AutomatedTests" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="d7c48414-9b1d-49d0-b44b-a92a9a748dbb" wadlVersion="http://wadl.dev.java.net/2009/02" name="SIGNIN" type="rest" definitionUrl="http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>ec2-52-203-145-99.compute-1.amazonaws.com:7001 traveler-api.ttdev.in</con:endpoint></con:endpoints><con:resource name="sign_in" path="/users/sign_in" id="948afba5-5ffc-4440-a549-d192ff653635"><con:settings/><con:parameters/><con:method name="Method 1" id="c7528823-614f-4e0c-9b32-84a978bf12a5" method="POST"><con:settings/><con:parameters/><con:request name="Request 1" id="d64103bc-b669-42bf-befd-5fb67bf06081" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
-  &lt;con:entry key="TT-Mobile" value=""/>
+<con:soapui-project id="6c6fb9a9-5dc3-4a2a-83e3-c252e3b49272" activeEnvironment="Default" name="TT_APIs_AutomatedTests" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="d7c48414-9b1d-49d0-b44b-a92a9a748dbb" wadlVersion="http://wadl.dev.java.net/2009/02" name="SIGNIN" type="rest" definitionUrl="http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://ec2-52-203-145-99.compute-1.amazonaws.com:7001 traveler-api.ttdev.in</con:endpoint></con:endpoints><con:resource name="sign_in" path="/users/sign_in" id="948afba5-5ffc-4440-a549-d192ff653635"><con:settings/><con:parameters/><con:method name="Method 1" id="c7528823-614f-4e0c-9b32-84a978bf12a5" method="POST"><con:settings/><con:parameters/><con:request name="Request 1" id="d64103bc-b669-42bf-befd-5fb67bf06081" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="TT-Mobile" value="DjB06vYg8iY07GgF3OngYDD8GUftvPC/EezRj0OOEFA="/>
   &lt;con:entry key="Content-Type" value="application/json; charset=UTF-8"/>
-&lt;/xml-fragment></con:setting></con:settings><con:endpoint> ec2-52-203-145-99.compute-1.amazonaws.com:7001 traveler-api.ttdev.in</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties><con:property><con:name>execution_tag</con:name><con:value/></con:property><con:property><con:name>dbname</con:name><con:value/></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:beforeRunScript>import groovy.lang.Binding;
+&lt;/xml-fragment></con:setting></con:settings><con:endpoint>http://ec2-52-203-145-99.compute-1.amazonaws.com:7001 traveler-api.ttdev.in</con:endpoint><con:request>{"login_type":"json","user":{"email":"a@a.com","password":"testing"}}</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:testSuite id="fdca761a-7dc9-4c44-8551-75593cd9d082" name="ReusableTests"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="1966b330-a53d-494b-ba1a-a687afdeabe8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CreateToken" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="4afacfac-43d1-4460-8712-12aef9c0477c"><con:settings/><con:config><script>import java.security.MessageDigest;
+import org.codehaus.groovy.runtime.EncodingGroovyMethods;
+
+
+String requestUrl = context.expand('${#TestCase#request_url}');
+String userEmail = context.expand('${#TestCase#user_email}');
+String requestType = context.expand('${#TestCase#request_type}');
+
+String digest;
+
+if( requestType == "post" ){
+  	digest = requestUrl; 
+} else {
+digest = userEmail + requestType;
+}
+
+digest = getUserDigest(digest); //this is final digest
+
+log.info digest;
+
+String getUserDigest(String digest) {
+   String TT_S_KEY = "DAFAC0A55F50A75558B778035E3C9A8BDF03AF1E4C2124D2CD5DD42092EFD32E";
+   try {
+       digest = TT_S_KEY + digest;
+       MessageDigest msgDigest = MessageDigest.getInstance("SHA-256");
+       msgDigest.update(digest.getBytes());
+       EncodingGroovyMethods encodeObj = new EncodingGroovyMethods();
+       //digest = new String(Base64.encode(msgDigest.digest(), Base64.DEFAULT));
+       digest = encodeObj.encodeBase64(msgDigest.digest()).toString();
+       if (digest.length() > 164) {
+           digest = digest.substring(0, 163);
+       }
+       return digest;
+   } catch (Exception e) {
+       log.info e.getMessage();
+   }
+   return null;
+}
+</script></con:config></con:testStep><con:properties><con:property><con:name>request_url</con:name><con:value/></con:property><con:property><con:name>user_email</con:name><con:value/></con:property><con:property><con:name>request_type</con:name><con:value/></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>execution_tag</con:name><con:value/></con:property><con:property><con:name>dbname</con:name><con:value/></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:beforeRunScript>import groovy.lang.Binding;
 import groovy.util.GroovyScriptEngine;
 import java.sql.DriverManager;
 import java.sql.Connection;
