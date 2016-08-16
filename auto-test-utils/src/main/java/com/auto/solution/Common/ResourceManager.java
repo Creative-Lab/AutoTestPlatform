@@ -1,5 +1,8 @@
 package com.auto.solution.Common;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class ResourceManager {
 	
 	private String FileSeperator = System.getProperty("file.separator");
@@ -22,7 +25,10 @@ public class ResourceManager {
 	}
 	
 	public void setResourcesBaseLocation(String resourceLocation){
-		this.resourceBasePath = resourceLocation;
+		if(!resourceLocation.contains(Property.FileSeperator))
+			this.resourceBasePath = this.projectBasePath + FileSeperator + resourceLocation;
+		else
+			this.resourceBasePath = resourceLocation;
 	}
 	
 	public String getChromeDriverExecutibleLocation(){
