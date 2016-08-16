@@ -290,6 +290,7 @@ public class Property {
 		ER_IN_GETTING_TESTSTEPS_FOR_TESTCASE("Something went wrong while getting test steps for the testcase"),
 		ER_IN_REPORTING_TESTCASE_STATUS("Error in reporting test result."),
 		ER_CONNECTING_REPOSITORIES("Couldn't connect to {REPOSITORY}."),
+		ER_CONNECTING_EXTERNALFILE("Engine failed to connect external file contant"),
 		ER_HOVER_TO_ELEMENT("Couldn't hover to test element"),
 		STEP_MARKED_OPTIONAL("Test Step has been marked as optional"),
 		ER_WHILE_SWITCHING_TO_FRAME("Couldn't switch to specified frame details.Please reverify the frame details - {FRAME_DETAILS}"),
