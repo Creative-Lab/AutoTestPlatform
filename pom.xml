@@ -163,21 +163,7 @@
 							<reportFormat>XML</reportFormat>
 							<settingsFile>${basedir}/auto-test-api/ext/soapui-settings.xml</settingsFile>
 							  <projectProperties>
-								<value>jcartendpoint=${jcartendpoint}</value>
-								<value>jauthendpoint=${jauthendpoint}</value>
-								<value>jcheckoutendpoint=${jcheckoutendpoint}</value>
-								<value>jshortlistendpoint=${jshortlistendpoint}</value>
-								<value>discoveryendpoint=${discoveryendpoint}</value>
-								<value>orderendpoint=${orderendpoint}</value>
-								<value>user_email=${user_email}</value>
-								<value>user_password=${user_password}</value>
-								<value>orderListProvider=${orderListProvider}</value>
-								<value>orderNumberList=${orderNumberList}</value>
-								<value>dbname=${dbname}</value>
 								<value>execution_tag=${execution_tag}</value>
-								<value>voucher_code=${voucher_code}</value>
-								<value>endpoint=${boutique_endpoint}</value>
-								<value>endpoint_internal=${boutique_endpoint_internal}</value>
 							  </projectProperties>
 							<soapuiProperties>
 								<property>
