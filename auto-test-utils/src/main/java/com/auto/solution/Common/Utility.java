@@ -384,6 +384,14 @@ public class Utility {
 		}
 		return cookieMap;
 	}
+	/*
+	 * Example
+	 * user @A fetch Value; using @D arg0#arg1#agr2#agr3;
+	 * arg0= represent the output variable name
+	 * arg1= represent the input variable value
+	 * arg2= represent the split value
+	 * arg3= represent the index number
+	 */
 	
 	public static String splitAndReturnIndexedValue(String arg1,String arg2,String arg3) throws Exception{
 		String outputValue = "";
@@ -400,6 +408,14 @@ public class Utility {
 		return outputValue.trim();
 	}
 	
+	/*
+	 * Example
+	 * user @A replaceAll;  @D arg0#arg1#arg2 with arg3;
+	 * arg0= represent the output variable name
+	 * arg1= represent the input variable value
+	 * arg2= represent the replace from value
+	 * arg3= represent the replace by value
+	 */
 	public static String replaceAll(String arg1,String arg2)throws Exception{
 		String outputValue ="";
 		try{

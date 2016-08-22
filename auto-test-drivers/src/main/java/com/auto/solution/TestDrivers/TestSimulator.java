@@ -296,7 +296,7 @@ public class TestSimulator {
  			Utility.setKeyValueToGlobalVarMap(testDataContents[0], outputValue);		
  			}
  			else if(stepAction.equalsIgnoreCase("fetchValueFromVariable")){
- 				if(testDataContents.length < 3){
+ 				if(testDataContents.length < 4){
  					throw new Exception(ERROR_MESSAGES.ER_SPECIFYING_TESTDATA.getErrorMessage());
  				}
  			String outputValue	= Utility.splitAndReturnIndexedValue(testDataContents[1], testDataContents[2], testDataContents[3]);
