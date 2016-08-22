@@ -922,20 +922,11 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 
 	@Override
 	public void shutdown() throws Exception {
-		try{
-			if(driver.getTitle() != "" || driver.getTitle() != null){
-				driver.close();
-			}
 			try{
 			driver.quit();}
 			catch(Exception te){
 				//Nothing to do.
 			}
-		}
-		catch(Exception e){
-			throw e;
-		}
-		
 	}
 
 	@Override
@@ -1069,8 +1060,6 @@ public class DesktopWebTestDriverImpl implements TestDrivers{
 	@Override
 	public String getTestElementAttribute(String propertyToFetch)
 			throws Exception {
-		
-		
 		try{
 		WebElement testElement = this.waitAndGetTestObject(true);
 		
