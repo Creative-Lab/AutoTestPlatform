@@ -288,6 +288,20 @@ public class TestSimulator {
  				String scriptResult = Utility.executeJava(testData);
  				Utility.setKeyValueToGlobalVarMap(testDataContents[0], scriptResult);
  			}
+ 			else if(stepAction.equalsIgnoreCase("replaceall")){
+ 				if(testDataContents.length < 3){
+ 					throw new Exception(ERROR_MESSAGES.ER_SPECIFYING_TESTDATA.getErrorMessage());
+ 				}
+ 			String outputValue	= Utility.replaceAll(testDataContents[1], testDataContents[2]);
+ 			Utility.setKeyValueToGlobalVarMap(testDataContents[0], outputValue);		
+ 			}
+ 			else if(stepAction.equalsIgnoreCase("fetchValueFromVariable")){
+ 				if(testDataContents.length < 3){
+ 					throw new Exception(ERROR_MESSAGES.ER_SPECIFYING_TESTDATA.getErrorMessage());
+ 				}
+ 			String outputValue	= Utility.splitAndReturnIndexedValue(testDataContents[1], testDataContents[2], testDataContents[3]);
+ 			Utility.setKeyValueToGlobalVarMap(testDataContents[0], outputValue);		
+ 			}
  			else if(stepAction.equalsIgnoreCase("assertoninputvalue")){
  				if(testDataContents.length != 1){
  					throw new Exception(ERROR_MESSAGES.ER_SPECIFYING_TESTDATA.getErrorMessage());
@@ -300,7 +314,6 @@ public class TestSimulator {
  						throw new Exception(errMessage);
  					}
  				}
- 				
  			}
  			else if(stepAction.equalsIgnoreCase("verifysortbyfeature")){
  				if(testDataContents.length != 1){
@@ -503,7 +516,9 @@ public class TestSimulator {
  			else if(stepAction.toLowerCase().equalsIgnoreCase("resizetodeafult")){
  				testSimulator.resizeToDeafult();
  			}
- 			
+ 			else if(stepAction.toLowerCase().equalsIgnoreCase("closeBrowserWindow")){
+ 				testSimulator.shutdown();
+ 			}
  			else{
  				throw new NoSuchMethodException(Property.ERROR_MESSAGES.ER_NO_STEP_ACTION.getErrorMessage());
  			}

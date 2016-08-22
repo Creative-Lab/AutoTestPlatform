@@ -384,7 +384,41 @@ public class Utility {
 		}
 		return cookieMap;
 	}
-
+	
+	public static String splitAndReturnIndexedValue(String arg1,String arg2,String arg3) throws Exception{
+		String outputValue = "";
+		try{
+			int index = Integer.parseInt(arg3);
+			outputValue = arg1.split(arg2)[index];
+		}
+		catch(NumberFormatException ex){
+			throw new Exception(Property.ERROR_MESSAGES.ERR_NOT_AN_INTEGER.getErrorMessage().replace("{ACTUAL_STRING_VALUE}", arg3));
+		}
+		catch (Exception e) {
+			throw e;
+		}
+		return outputValue.trim();
+	}
+	
+	public static String replaceAll(String arg1,String arg2)throws Exception{
+		String outputValue ="";
+		try{
+			String []dataValues = arg2.split("with");
+			String replace = dataValues[0].trim();
+			String replaceBy = dataValues[1].trim();
+			if(replace.equalsIgnoreCase("spaces") && replaceBy.equalsIgnoreCase("blanks")){
+				outputValue = arg1.replaceAll(" ", "");
+			}else if(replace.equalsIgnoreCase("commas") && replaceBy.equalsIgnoreCase("blanks")){
+				outputValue = arg1.replaceAll("\\,", "");
+			}
+			else{
+				outputValue = arg1.replaceAll(replace, replaceBy);
+			}
+		}catch(Exception e){
+			throw e;
+		}
+		return outputValue;
+	}
 	
     public static boolean assertOnInputValue(String testData) throws Exception{
    	 boolean bFlag = false;
