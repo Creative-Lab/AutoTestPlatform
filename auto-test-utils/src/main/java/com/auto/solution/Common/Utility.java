@@ -25,6 +25,9 @@ import javax.imageio.ImageWriter;
 import javax.imageio.stream.FileImageOutputStream;
 
 import org.apache.commons.lang.time.StopWatch;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripperByArea;
 
 import com.auto.solution.Common.Property.ERROR_MESSAGES;
 import com.auto.solution.Common.Property.STRATEGY_KEYWORD;
@@ -594,7 +597,27 @@ public class Utility {
     	}
     	return webPageUrls;
     }
-	
+    
+    public static boolean verifyPdfText(String filePath,String textToVerify){
+    	boolean flag = false;
+    	try {	
+		    PDDocument document = null;   
+		    document = PDDocument.load(new File(filePath));
+		    document.getClass();
+		    if (!document.isEncrypted()) {
+		        PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+		        stripper.setSortByPosition(true);
+		        PDFTextStripper Tstripper = new PDFTextStripper();
+		        String st = Tstripper.getText(document);
+		       if(st.toLowerCase().contains(textToVerify.toLowerCase()))
+		    	   flag = true;
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+    	return flag;
+    }
+    
 	public static File reduceScreenShotSize(File srcFile, String destinationPath) throws Exception {
 		String srcPath = srcFile.getAbsolutePath();
 		float quality = 0.5f;
