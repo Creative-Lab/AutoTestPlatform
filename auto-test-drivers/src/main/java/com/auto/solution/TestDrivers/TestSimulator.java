@@ -315,6 +315,30 @@ public class TestSimulator {
  					}
  				}
  			}
+ 			else if(stepAction.equalsIgnoreCase("verifyPdfText")){
+ 				if(testDataContents.length < 2){
+ 					throw new Exception(ERROR_MESSAGES.ER_SPECIFYING_TESTDATA.getErrorMessage());
+ 				}	
+ 				String tempFile = null; 
+ 				try{
+ 				tempFile =	rm.getLocationForExternalFilesInResources().replace("{EXTERNAL_FILE_NAME}", testDataContents[0]);
+ 				tempFile =  tempFile.replace("{PROJECT_NAME}", Property.PROJECT_NAME);
+ 				String filepath = Utility.getAbsolutePath(tempFile);
+ 					if(testDataContents.length == 3){
+ 						String[] pageRange = testDataContents[2].split("to");
+ 						if(pageRange.length==2){
+ 							Utility.verifyPdfText(filepath,testDataContents[1],Integer.parseInt(pageRange[0].trim()),Integer.parseInt(pageRange[1].trim()));
+ 						}else{
+ 	 						Utility.verifyPdfText(filepath,testDataContents[1],Integer.parseInt(testDataContents[2].trim()),Integer.parseInt(testDataContents[2].trim()));
+ 						}
+ 					}
+ 					else{
+ 						Utility.verifyPdfText(filepath,testDataContents[1],-1,-1);
+ 					}
+ 				}catch(Exception ex){
+ 					throw ex;
+ 				}
+ 			}
  			else if(stepAction.equalsIgnoreCase("verifysortbyfeature")){
  				if(testDataContents.length != 1){
  					throw new Exception(ERROR_MESSAGES.ER_SPECIFYING_TESTDATA.getErrorMessage());

@@ -25,6 +25,9 @@ import javax.imageio.ImageWriter;
 import javax.imageio.stream.FileImageOutputStream;
 
 import org.apache.commons.lang.time.StopWatch;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripperByArea;
 
 import com.auto.solution.Common.Property.ERROR_MESSAGES;
 import com.auto.solution.Common.Property.STRATEGY_KEYWORD;
@@ -594,7 +597,40 @@ public class Utility {
     	}
     	return webPageUrls;
     }
-	
+    
+    /*
+     * verify text from whole file:- @A verifyPdfText; @D filename#texttoverify;
+     * verify text from page number file:- @A verifyPdfText; @D filename#texttoverify#pagenumber;
+     * verify text from range of page:- @A verifyPdfText; @D filename#texttoverify#startpagenumber to endpagenumber;
+     */
+    
+    public static void verifyPdfText(String filePath,String expectedValueOfProperty,int startPage,int endPage){
+    	try {	
+    		PDDocument document = null;   
+		    document = PDDocument.load(new File(filePath));
+		    document.getClass();
+		    if (!document.isEncrypted()) {
+		        PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+		        stripper.setSortByPosition(true);
+		        PDFTextStripper Tstripper = new PDFTextStripper();
+		        
+		        if(startPage >= 0 || endPage >= 0){
+			        Tstripper.setStartPage(startPage);
+			        Tstripper.setEndPage(endPage);
+		        }
+		        String actualTestElementProperty = Tstripper.getText(document);
+		       
+		        if(!Utility.matchContentsBasedOnStrategyDefinedForTestStep(expectedValueOfProperty, actualTestElementProperty)){
+					String errMessage = ERROR_MESSAGES.ER_IN_VERIFYING_TESTELEMENT_PROPERTY.getErrorMessage().replace("{EXPECTED}", expectedValueOfProperty);
+					errMessage = errMessage.replace("{ACTUAL}", actualTestElementProperty);
+					throw new Exception(errMessage);
+				}
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+    }
+    
 	public static File reduceScreenShotSize(File srcFile, String destinationPath) throws Exception {
 		String srcPath = srcFile.getAbsolutePath();
 		float quality = 0.5f;
