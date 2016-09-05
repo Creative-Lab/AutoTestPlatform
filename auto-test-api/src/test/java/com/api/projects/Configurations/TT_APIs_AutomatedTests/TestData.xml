@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
    <TestSuite>
-		
+		<SIGNIN_TO_Traveler>
+			<tags>login</tags>
+	   </SIGNIN_TO_Traveler>
+	   <Explore_The_App>
+		   <tags>explore</tags>
+	   </Explore_The_App>
+	   <Search>
+		   <tags>search</tags>
+		   <User_Search_for_a_trip>
+			   <number_of_days>4-6</number_of_days>
+			   <trip_type>2</trip_type>
+			   <trip_category>family</trip_category>
+			   <result_type>all</result_type>
+			   <price_ranges>40000-60000</price_ranges>
+		   </User_Search_for_a_trip>
+	   </Search>
+	   <EndToEndScenarios>
+		   <tags>sanity	</tags>
+	   </EndToEndScenarios>
 </TestSuite>
 </project>
