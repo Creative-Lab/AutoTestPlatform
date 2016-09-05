@@ -598,24 +598,37 @@ public class Utility {
     	return webPageUrls;
     }
     
-    public static boolean verifyPdfText(String filePath,String textToVerify){
-    	boolean flag = false;
+    /*
+     * verify text from whole file:- @A verifyPdfText; @D filename#texttoverify;
+     * verify text from page number file:- @A verifyPdfText; @D filename#texttoverify#pagenumber;
+     * verify text from range of page:- @A verifyPdfText; @D filename#texttoverify#startpagenumber to endpagenumber;
+     */
+    
+    public static void verifyPdfText(String filePath,String expectedValueOfProperty,int startPage,int endPage){
     	try {	
-		    PDDocument document = null;   
+    		PDDocument document = null;   
 		    document = PDDocument.load(new File(filePath));
 		    document.getClass();
 		    if (!document.isEncrypted()) {
 		        PDFTextStripperByArea stripper = new PDFTextStripperByArea();
 		        stripper.setSortByPosition(true);
 		        PDFTextStripper Tstripper = new PDFTextStripper();
-		        String st = Tstripper.getText(document);
-		       if(st.toLowerCase().contains(textToVerify.toLowerCase()))
-		    	   flag = true;
+		        
+		        if(startPage >= 0 || endPage >= 0){
+			        Tstripper.setStartPage(startPage);
+			        Tstripper.setEndPage(endPage);
+		        }
+		        String actualTestElementProperty = Tstripper.getText(document);
+		       
+		        if(!Utility.matchContentsBasedOnStrategyDefinedForTestStep(expectedValueOfProperty, actualTestElementProperty)){
+					String errMessage = ERROR_MESSAGES.ER_IN_VERIFYING_TESTELEMENT_PROPERTY.getErrorMessage().replace("{EXPECTED}", expectedValueOfProperty);
+					errMessage = errMessage.replace("{ACTUAL}", actualTestElementProperty);
+					throw new Exception(errMessage);
+				}
 		    }
 		} catch (Exception e) {
 		    e.printStackTrace();
 		}
-    	return flag;
     }
     
 	public static File reduceScreenShotSize(File srcFile, String destinationPath) throws Exception {
